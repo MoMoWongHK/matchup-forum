@@ -1,0 +1,26 @@
+{
+  "explore": "Explore",
+  "categories": {
+    "grocery": "Grocery",
+    "health": "Health",
+    "beauty": "Beauty",
+    "mother": "Mother & Baby",
+    "pets": "Pets",
+    "electronics": "Electronics",
+    "lifestyle": "Lifestyle",
+    "sports": "Sports",
+    "toys": "Toys",
+    "fashion": "Fashion",
+    "business": "Business Services",
+    "home": "Home Services",
+    "legal": "Legal Services",
+    "food": "Food",
+    "travel": "Travel",
+    "entertainment": "Entertainment",
+    "education": "Education",
+    "crafts": "Crafts & Workshops",
+    "money": "Money & Insurance",
+    "jewellery": "Jewellery & Watches",
+    "others": "Others"
+  }
+}

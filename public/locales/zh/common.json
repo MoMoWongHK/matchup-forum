@@ -1,0 +1,26 @@
+{
+  "explore": "發現",
+  "categories": {
+    "grocery": "雜貨",
+    "health": "健康",
+    "beauty": "美容",
+    "mother": "母嬰用品",
+    "pets": "寵物用品",
+    "electronics": "電子產品",
+    "lifestyle": "生活品味",
+    "sports": "運動用品",
+    "toys": "玩具",
+    "fashion": "時裝",
+    "business": "商業服務",
+    "home": "家居服務",
+    "legal": "法律服務",
+    "food": "食品",
+    "travel": "旅遊",
+    "entertainment": "娛樂",
+    "education": "教育",
+    "crafts": "工藝及工作坊",
+    "money": "金融與保險",
+    "jewellery": "珠寶鐘錶",
+    "others": "其他"
+  }
+}

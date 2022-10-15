@@ -1,5 +1,9 @@
 {
-  "explore": "Explore",
+  "explore": "Explore123",
+  "BottomAppBar": {
+    "homepage": "Homepage",
+    "login": "Login"
+  },
   "categories": {
     "grocery": "Grocery",
     "health": "Health",

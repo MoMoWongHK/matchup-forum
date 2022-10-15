@@ -1,5 +1,9 @@
 {
   "explore": "發現",
+  "BottomAppBar": {
+    "homepage": "主頁",
+    "login": "登入"
+  },
   "categories": {
     "grocery": "雜貨",
     "health": "健康",

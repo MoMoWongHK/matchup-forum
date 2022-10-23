@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Comment } from "../model/Comment";
-import { CommentItem } from "./Comment";
+import { CommentItem } from "./CommentCard";
 
 interface CommentListProps {
   postID: string;

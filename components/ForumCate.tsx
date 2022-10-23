@@ -8,12 +8,12 @@ export const ForumCate: React.FC = () => {
     {
       icon: faList,
       text: "All",
-      href: "/all",
+      href: "/c/all",
     },
     {
       icon: faLightbulb,
       text: "Startup",
-      href: "/startup",
+      href: "/c/startup",
     },
   ];
 

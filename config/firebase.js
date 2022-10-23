@@ -3,9 +3,7 @@ import { getAuth, connectAuthEmulator } from "firebase/auth";
 import { getStorage, connectStorageEmulator } from "firebase/storage";
 import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 
-import { getAnalytics, isSupported } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
-import { isLocalhost } from "../utils/utiltyHelper";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAx65y3vWGrfVsphxr8MTX3MYZUU2XnsHU",

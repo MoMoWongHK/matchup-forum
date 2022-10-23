@@ -10,6 +10,7 @@ import {
   NavButtonGroupDir,
 } from "../components/NavButtonGroup";
 import { Footer } from "../components/Footer";
+import { ForumCate } from "../components/ForumCate";
 import { appWithTranslation } from "next-i18next";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -24,12 +25,16 @@ function MyApp({ Component, pageProps }: AppProps) {
         </header>
         <div
           className="min-h-screen overflow-scroll lg:grid"
-          style={{ gridTemplateColumns: "140px auto" }}
+          style={{ gridTemplateColumns: "300px auto" }}
         >
-          <div className="hiddenlg:inline-block mt-15">
+          <div className="hidden lg:inline-block mt-15">
+            {/* forum cate*/}
+            <div>
+              <ForumCate />
+            </div>
             <NavButtonGroup dir={NavButtonGroupDir.COL} />
           </div>
-          <div className="min-h-1/2 mt-2 px-2 xl:px-4 mx-auto">
+          <div className="w-full min-h-1/2 mt-2 px-2 xl:px-4 mx-auto">
             <Component {...pageProps} />
           </div>
         </div>

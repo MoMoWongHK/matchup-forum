@@ -1,45 +1,54 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
+import { faBell, faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export const Header: React.FC = (props) => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-sky-700 ">
       <div className="navbar-start">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link href="/">
+          <div className="btn btn-ghost normal-case text-xl text-white">
+            Matchup forum
+          </div>
+        </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li tabIndex={0}>
-            <a>
-              Parent
-              <svg
-                className="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-              </svg>
-            </a>
-            <ul className="p-2">
+      <div className="navbar-center hidden lg:flex"></div>
+      <div className="navbar-end">
+        <div className="w-14">
+          <button className="btn btn-circle btn-ghost">
+            <FontAwesomeIcon
+              icon={faBell}
+              className={classNames("text-lg text-white")}
+            />
+          </button>
+        </div>
+        <div className="w-30 ">
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost rounded-2xl m-1">
+              <FontAwesomeIcon
+                icon={faUser}
+                className={classNames("text-lg text-white")}
+              />
+              <FontAwesomeIcon
+                icon={faCaretDown}
+                className={classNames("ml-2 text-sm text-white")}
+              />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
               <li>
-                <a>Submenu 1</a>
+                <a>Item 1</a>
               </li>
               <li>
-                <a>Submenu 2</a>
+                <a>Item 2</a>
               </li>
             </ul>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Get started</a>
+          </div>
+        </div>
       </div>
     </div>
   );

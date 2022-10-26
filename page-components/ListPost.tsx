@@ -9,7 +9,7 @@ interface ListPostProps {
 
 const ListPost: NextPage<ListPostProps> = ({ posts }) => {
   return (
-    <div>
+    <div className=" px-2 xl:px-4 ">
       {posts &&
         posts.map((e) => {
           return <PostCard key={e.id} data={e} />;

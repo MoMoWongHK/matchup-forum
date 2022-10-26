@@ -63,4 +63,46 @@ const isAuth = (authObj: any) => {
   );
 };
 
-export { getUserLang, isLocalhost, getRole, isAuth };
+const timeStampToDisplayTimeString = (ts: any) => {
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const date = new Date(
+    ts.hasOwnProperty("seconds") ? ts.seconds * 1000 : ts * 1000
+  );
+  return (
+    date.getDate() +
+    " " +
+    monthNames[date.getMonth()] +
+    ", " +
+    date.getFullYear() +
+    " | " +
+    (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) +
+    ":" +
+    (date.getMinutes() === 0
+      ? "00"
+      : date.getMinutes() < 10
+      ? "0" + date.getMinutes().toString()
+      : date.getMinutes()) +
+    (date.getHours() > 12 ? " PM" : " AM")
+  );
+};
+
+export {
+  timeStampToDisplayTimeString,
+  getUserLang,
+  isLocalhost,
+  getRole,
+  isAuth,
+};

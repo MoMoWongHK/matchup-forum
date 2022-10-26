@@ -26,5 +26,10 @@
     "money": "金融與保險",
     "jewellery": "珠寶鐘錶",
     "others": "其他"
+  },
+  "CategoryPage": {
+    "hot": "熱門",
+    "newest": "最新",
+    "follow": "追蹤"
   }
 }

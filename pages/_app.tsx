@@ -23,10 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <header>
           <Header />
         </header>
-        <div
-          className="min-h-screen overflow-scroll lg:grid"
-          style={{ gridTemplateColumns: "300px auto" }}
-        >
+        <div className="lg:grid" style={{ gridTemplateColumns: "300px auto" }}>
           <div className="hidden lg:inline-block mt-15">
             {/* forum cate*/}
             <div>
@@ -34,7 +31,10 @@ function MyApp({ Component, pageProps }: AppProps) {
             </div>
             <NavButtonGroup dir={NavButtonGroupDir.COL} />
           </div>
-          <div className="w-full min-h-1/2 mt-2 px-2 xl:px-4 mx-auto">
+          <div
+            className="w-full min-h-1/2 mt-2 mx-auto overflow-x-hidden overflow-y-scroll"
+            style={{ maxHeight: "calc( 100vh - 150px)" }}
+          >
             <Component {...pageProps} />
           </div>
         </div>

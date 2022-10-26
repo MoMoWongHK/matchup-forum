@@ -14,6 +14,27 @@ import { Post } from "../model/Post";
 
 const db = getFirestore(firebaseApp);
 
+const isLikedPost = (
+  postID: string,
+  uid: string
+): Promise<{ success: boolean; liked: boolean }> => {
+  return new Promise(async (resolve) => {
+    await getDoc(doc(db, "Post", postID, "Liked", uid))
+      .then((doc: any) => {
+        return resolve({
+          success: true,
+          liked: doc.exists(),
+        });
+      })
+      .catch((err: any) => {
+        return resolve({
+          success: false,
+          liked: false,
+        });
+      });
+  });
+};
+
 const getPost = (
   postID: string
 ): Promise<
@@ -93,4 +114,4 @@ const getPosts = (
   });
 };
 
-export { getPost, getPosts };
+export { isLikedPost, getPost, getPosts };

@@ -3,14 +3,17 @@ import {
   doc,
   getDoc,
   getDocs,
+  setDoc,
   getFirestore,
   limit,
   orderBy,
   query,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 import firebaseApp from "../config/firebase";
-import { Post } from "../model/Post";
+import { Post, POST_LIKE_DIRECTION } from "../model/Post";
+import { Reaction } from "../model/Reaction";
 
 const db = getFirestore(firebaseApp);
 
@@ -32,6 +35,48 @@ const isLikedPost = (
           liked: false,
         });
       });
+  });
+};
+
+const setPostLike = (
+  liked: boolean,
+  postID: string,
+  uid: string
+): Promise<{ success: boolean }> => {
+  return new Promise(async (resolve) => {
+    if (liked) {
+      //remove item
+      await deleteDoc(doc(db, "Post", postID, "Liked", uid))
+        .then((doc: any) => {
+          return resolve({
+            success: true,
+          });
+        })
+        .catch((err: any) => {
+          return resolve({
+            success: false,
+          });
+        });
+    } else {
+      // add record
+      const obj: Reaction = {
+        createDate: new Date(),
+        createUserID: uid,
+        direction: POST_LIKE_DIRECTION.LIKE,
+      };
+
+      await setDoc(doc(db, "Post", postID, "Liked", uid), obj)
+        .then((doc: any) => {
+          return resolve({
+            success: true,
+          });
+        })
+        .catch((err: any) => {
+          return resolve({
+            success: false,
+          });
+        });
+    }
   });
 };
 
@@ -114,4 +159,4 @@ const getPosts = (
   });
 };
 
-export { isLikedPost, getPost, getPosts };
+export { isLikedPost, getPost, getPosts, setPostLike };

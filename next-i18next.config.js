@@ -1,6 +1,6 @@
 module.exports = {
   i18n: {
-    defaultLocale: "hk",
+    defaultLocale: "en",
     localeDetection: true,
     locales: ["en", "hk"],
     domains: [

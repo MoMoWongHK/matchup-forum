@@ -1,4 +1,5 @@
 export interface Category {
+  avatarURL: string;
   titleHK: string;
   titleEN: string;
   descriptionHK: string;
@@ -17,10 +18,10 @@ enum CATEGORY_STATUS {
 }
 
 export const defaultCategory = {
-  titleHK: "香港城市大學",
-  titleEN: "City University of Hong Kong",
-  descriptionHK:
-    "作為全球領先的大學，城大秉承新理念，並不斷尋求新方法來改善世界。 城大在QS排名中目前在全球大學中排名第48位。",
+  avatarURL: "",
+  titleHK: "",
+  titleEN: "",
+  descriptionHK: "",
   descriptionEN: "",
   numOfPost: 0,
   status: CATEGORY_STATUS.ONLINE,

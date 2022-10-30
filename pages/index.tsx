@@ -1,8 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import { useSelector } from "react-redux";
+import { isAuth } from "../utils/utiltyHelper";
 
 const Home: NextPage = () => {
+  const auth = useSelector((state: any) => {
+    return state.LoginManager.auth;
+  });
+
   return (
     <>
       <Head>
@@ -11,7 +16,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>hello world</main>
+      <main>{isAuth(auth) ? "welcome back" : "hello world"}</main>
     </>
   );
 };

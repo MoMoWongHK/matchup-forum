@@ -1,6 +1,5 @@
 export enum ROLE {
-  KOL = "kol",
-  CUSTOMER = "customer",
-  ADMIN = "admin",
+  USER = "USER",
+  ADMIN = "ADMIN",
   DEFAULT = "",
 }

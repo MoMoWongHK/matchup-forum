@@ -20,7 +20,7 @@ import {
   faFile,
 } from "@fortawesome/free-regular-svg-icons";
 import classNames from "classnames";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ROLE } from "../Enum/APP_TYPE";
 import { useTranslation } from "next-i18next";
 import { getRole, isAuth } from "../utils/utiltyHelper";
@@ -35,10 +35,9 @@ interface NavButtonGroupProps {
 }
 
 export const NavButtonGroup: React.FC<NavButtonGroupProps> = ({ dir }) => {
-  const dispatch = useDispatch();
   const { t } = useTranslation("common");
   const auth = useSelector((state: any) => {
-    return state.firebase.auth;
+    return state.LoginManager.auth;
   });
 
   const [role, setRole] = useState<ROLE>(ROLE.DEFAULT);
@@ -90,7 +89,7 @@ export const NavButtonGroup: React.FC<NavButtonGroupProps> = ({ dir }) => {
           />
 
           <NavButton
-            visible={isAuth(auth) && role === ROLE.KOL}
+            visible={isAuth(auth) && role === ROLE.USER}
             icon={faIdBadge}
             iconAfter={faIdBadgeAfter}
             i18Text={t("BottomAppBar.profile")}

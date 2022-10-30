@@ -3,8 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { faBell, faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { isAuth } from "../utils/utiltyHelper";
+import { useSelector } from "react-redux";
 
 export const Header: React.FC = (props) => {
+  const auth = useSelector((state: any) => {
+    return state.LoginManager.auth;
+  });
+
+  const router = useRouter();
+
   return (
     <div className="navbar bg-sky-700 ">
       <div className="navbar-start">
@@ -40,12 +49,32 @@ export const Header: React.FC = (props) => {
               tabIndex={0}
               className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 2</a>
-              </li>
+              {isAuth(auth) ? (
+                <li>
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() => router.push("/logout")}
+                  >
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() => router.push("/login")}
+                  >
+                    Login
+                  </button>
+                </li>
+              )}
+
+              <button
+                className="btn btn-ghost"
+                onClick={() => router.push("/about")}
+              >
+                About
+              </button>
             </ul>
           </div>
         </div>

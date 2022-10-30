@@ -16,6 +16,11 @@ export enum POST_TYPE {
   VOTE = "VOTE",
 }
 
+export enum POST_LIKE_DIRECTION {
+  LIKE = "LIKE",
+  DISLIKE = "DISLIKE",
+}
+
 interface POST_TEXT_DATA {
   type: POST_TYPE.TEXT;
   text: string;

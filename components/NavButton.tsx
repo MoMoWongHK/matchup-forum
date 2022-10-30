@@ -62,9 +62,7 @@ export const NavButton: React.FC<NavButtonProps> = ({
               })}
             />
           </div>
-          <div className="font-normal">
-            {i18Text} {t("explore")}
-          </div>
+          <div className="font-normal">{i18Text}</div>
         </button>
       </Link>
     </div>

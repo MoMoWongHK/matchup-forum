@@ -6,6 +6,8 @@ import modal from "./ModalControllerStore";
 
 import { createLogger } from "redux-logger";
 import { persistReducer } from "redux-persist";
+import systemManager from "./SystemManager";
+import loginManager from "./LoginManger";
 
 const bindMiddleware = (middleware: any) => {
   const loggerMiddleware = createLogger({
@@ -22,6 +24,8 @@ const bindMiddleware = (middleware: any) => {
 
 export const combinedReducer = combineReducers({
   modal,
+  SystemManager: systemManager,
+  LoginManager: loginManager,
   firebase: firebaseReducer,
 });
 

@@ -6,7 +6,7 @@ import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { getUserName } from "../helperFunction/userDBHelper";
 import { isAuth, timeStampToDisplayTimeString } from "../utils/utiltyHelper";
 import { useSelector } from "react-redux";
-import { isLikedPost } from "../helperFunction/postDBHelper";
+import { isLikedPost, setPostLike } from "../helperFunction/postDBHelper";
 
 interface PostCardProps {
   data: Post;
@@ -14,7 +14,7 @@ interface PostCardProps {
 
 export const PostCard: React.FC<PostCardProps> = ({ data }) => {
   const auth = useSelector((state: any) => {
-    return state.firebase.auth;
+    return state.LoginManager.auth;
   });
 
   const [userName, setUserName] = useState<string>("");
@@ -37,6 +37,15 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
       });
     }
   }, [auth]);
+
+  const onClickLike = () => {
+    setPostLike(liked, data.id, auth.uid).then((result) => {
+      // fake update
+      if (result.success) {
+        setLiked(!liked);
+      }
+    });
+  };
 
   return (
     <>
@@ -68,21 +77,26 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
         </div>
         {/* comment and share count */}
         <div className="flex gap-4">
-          <div>
+          <button
+            className="btn btn-ghost py-1 px-2 rounded-full"
+            onClick={() => onClickLike()}
+          >
             <FontAwesomeIcon
               icon={faThumbsUp}
-              className={classNames("text-lg mr-2")}
+              className={classNames("text-lg mr-2", {
+                "text-blue-500": liked,
+              })}
             />
             <span>{data.numOfLike}</span>
-          </div>
+          </button>
 
-          <div>
+          <button className="btn btn-ghost py-1 px-2 rounded-full">
             <FontAwesomeIcon
               icon={faComment}
               className={classNames("text-lg mr-2")}
             />
             <span>{data.numOfComment}</span>
-          </div>
+          </button>
         </div>
       </div>
       <hr className="mx-auto my-4 w-11/12 bg-gray-200" />

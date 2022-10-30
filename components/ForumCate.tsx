@@ -15,6 +15,11 @@ export const ForumCate: React.FC = () => {
       text: "Startup",
       href: "/c/startup",
     },
+    {
+      icon: faLightbulb,
+      text: "Cityu",
+      href: "/c/cityu",
+    },
   ];
 
   return (

@@ -15,8 +15,7 @@ import { Footer } from "../components/Footer";
 import { ForumCate } from "../components/ForumCate";
 import { appWithTranslation } from "next-i18next";
 import { SUPPORTED_REDUX_FUNCTIONS } from "../redux/SUPPORTED_REDUX_FUNCTION";
-import { GetStaticPropsContext } from "next";
-import { ssrExchange } from "urql";
+import type { GetStaticPropsContext } from "next";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const store = useStore();
@@ -66,17 +65,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </main>
     </PersistGate>
   );
-}
-
-export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const ssrCache = ssrExchange({ isClient: false });
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "en", ["common"])),
-      urqlState: ssrCache.extractData(),
-    }, // will be passed to the page component as props
-  };
 }
 
 export default wrapper.withRedux(appWithTranslation(MyApp));

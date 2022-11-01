@@ -3,30 +3,45 @@ import { Post, POST_TYPE } from "../model/Post";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { getUserName } from "../helperFunction/userDBHelper";
-import { isAuth, timeStampToDisplayTimeString } from "../utils/utiltyHelper";
+import { getUserBasicInfo } from "../helperFunction/userDBHelper";
+import {
+  isAuth,
+  timeAgo,
+  timeStampToDisplayTimeString,
+} from "../utils/utiltyHelper";
 import { useSelector } from "react-redux";
 import { isLikedPost, setPostLike } from "../helperFunction/postDBHelper";
+import { useRouter } from "next/router";
 
 interface PostCardProps {
   data: Post;
 }
 
 export const PostCard: React.FC<PostCardProps> = ({ data }) => {
+  const router = useRouter();
   const auth = useSelector((state: any) => {
     return state.LoginManager.auth;
   });
 
-  const [userName, setUserName] = useState<string>("");
+  const [postUser, setPostUser] = useState<{
+    userName: string;
+    avatarUrl: string;
+  }>({
+    userName: "",
+    avatarUrl: "",
+  });
   const [liked, setLiked] = useState<boolean>(false);
 
   useEffect(() => {
-    getUserName(data.createUserID).then((result) => {
+    getUserBasicInfo(data.createUserID).then((result) => {
       if (result.success) {
-        setUserName(result.data);
+        setPostUser({
+          userName: result.data.userName,
+          avatarUrl: result.data.avatarUrl,
+        });
       }
     });
-  }, [auth]);
+  }, []);
 
   useEffect(() => {
     if (isAuth(auth)) {
@@ -39,12 +54,16 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
   }, [auth]);
 
   const onClickLike = () => {
-    setPostLike(liked, data.id, auth.uid).then((result) => {
-      // fake update
-      if (result.success) {
-        setLiked(!liked);
-      }
-    });
+    if (isAuth(auth)) {
+      setPostLike(liked, data.id, auth.uid).then((result) => {
+        // fake update
+        if (result.success) {
+          setLiked(!liked);
+        }
+      });
+    } else {
+      router.push("/login");
+    }
   };
 
   return (
@@ -52,19 +71,22 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
       <div
         className="w-full grid py-2 px-4 mx-auto gap-2  "
         style={{ gridTemplateRows: "45px auto 45px" }}
+        onClick={() => router.push("/p/" + data.id)}
       >
         {/* avatar and name*/}
         <div className="grid" style={{ gridTemplateColumns: "40px auto 30px" }}>
           <div>
             <div className="avatar">
               <div className="w-8 rounded-full">
-                <img src="https://placeimg.com/192/192/people" />
+                <img src={postUser.avatarUrl} alt={postUser.userName} />
               </div>
             </div>
           </div>
           <div className="text-gray-500">
-            {userName}
-            <span>{timeStampToDisplayTimeString(data.createUserID)}</span>
+            {postUser.userName}
+            <span className="px-2 text-sm">
+              - {timeAgo(data.createDate.seconds)}
+            </span>
           </div>
         </div>
         {/* post title*/}

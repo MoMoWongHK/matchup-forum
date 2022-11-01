@@ -10,6 +10,11 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { addMember } from "./helperFunction/userDBHelper";
 import { memberInit } from "./modal/Member";
+import { updatePostCount } from "./helperFunction/categoryDBHelper";
+import {
+  updateCommentCount,
+  updateLikeCount,
+} from "./helperFunction/postDBHelper";
 
 const app = express();
 
@@ -43,6 +48,75 @@ exports.newMember = functions
         .catch((err) => console.error(err));
 
       functions.logger.log("new member:" + uid);
+      return null;
+    } catch (err: any) {
+      console.log(err);
+      return null;
+    }
+  });
+
+exports.newPost = functions
+  .region("asia-east2")
+  .firestore.document("Post/{postID}")
+  .onCreate(async (event) => {
+    try {
+      const objectIDArr = event.ref.path.split("/");
+      const postID = objectIDArr[1];
+
+      // update post count to category
+      updatePostCount(postID)
+        .then((result) => {
+          return 0;
+        })
+        .catch((err) => console.error(err));
+
+      functions.logger.log("on create post:" + postID);
+      return null;
+    } catch (err: any) {
+      console.log(err);
+      return null;
+    }
+  });
+
+exports.newComment = functions
+  .region("asia-east2")
+  .firestore.document("Post/{postID}/Comment/{commentID}")
+  .onCreate(async (event) => {
+    try {
+      const objectIDArr = event.ref.path.split("/");
+      const postID = objectIDArr[1];
+      // const commentID = objectIDArr[objectIDArr.length - 1];
+
+      updateCommentCount(postID)
+        .then((result) => {
+          return 0;
+        })
+        .catch((err) => console.error(err));
+
+      functions.logger.log("on create post:" + postID);
+      return null;
+    } catch (err: any) {
+      console.log(err);
+      return null;
+    }
+  });
+
+exports.newComment = functions
+  .region("asia-east2")
+  .firestore.document("Post/{postID}/Liked/{uid}")
+  .onCreate(async (event) => {
+    try {
+      const objectIDArr = event.ref.path.split("/");
+      const postID = objectIDArr[1];
+      // const commentID = objectIDArr[objectIDArr.length - 1];
+
+      updateLikeCount(postID)
+        .then((result) => {
+          return 0;
+        })
+        .catch((err) => console.error(err));
+
+      functions.logger.log("on create post:" + postID);
       return null;
     } catch (err: any) {
       console.log(err);

@@ -1,4 +1,5 @@
 export const memberInit: Member = {
+  avatarUrl: "",
   GCMToken: [],
   bookmark: [],
   createDate: new Date(),
@@ -6,6 +7,7 @@ export const memberInit: Member = {
 };
 
 export interface Member {
+  avatarUrl: string;
   GCMToken: string[];
   bookmark: string[];
   createDate: Date;

@@ -15,12 +15,15 @@ import { User } from "../model/User";
 
 const db = getFirestore(firebaseApp);
 
-const getUserName = (
+const getUserBasicInfo = (
   uid: string
 ): Promise<
   | {
       success: true;
-      data: string;
+      data: {
+        userName: string;
+        avatarUrl: string;
+      };
     }
   | {
       success: false;
@@ -32,7 +35,10 @@ const getUserName = (
         if (doc.exists()) {
           return resolve({
             success: true,
-            data: doc.data().userName,
+            data: {
+              userName: doc.data().userName,
+              avatarUrl: doc.data().avatarUrl,
+            },
           });
         }
         return resolve({
@@ -121,4 +127,4 @@ const getUsers = (
   });
 };
 
-export { getUser, getUsers, getUserName };
+export { getUser, getUsers, getUserBasicInfo };

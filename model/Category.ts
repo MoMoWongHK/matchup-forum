@@ -17,7 +17,7 @@ enum CATEGORY_STATUS {
   CLOSE,
 }
 
-export const defaultCategory = {
+export const defaultCategory: Category = {
   avatarURL: "",
   titleHK: "",
   titleEN: "",

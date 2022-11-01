@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { NextPage } from "next";
-import { examplePost, Post } from "../../model/Post";
+import { Post } from "../../model/Post";
 import ListPost from "../../page-components/ListPost";
 import { Trans } from "next-i18next";
 import { Category, defaultCategory } from "../../model/Category";
 import { useRouter } from "next/router";
 import { getCategory } from "../../helperFunction/categoryDBHelper";
 import { getPosts } from "../../helperFunction/postDBHelper";
+import { CommentList } from "../../components/CommentList";
 
 const Category: NextPage = () => {
   const router = useRouter();
@@ -53,20 +54,22 @@ const Category: NextPage = () => {
         <button className="absolute right-0 top-0 btn btn-sm md:btn-md w-20 md:w-40 btn-primary">
           <Trans>CategoryPage.follow</Trans>
         </button>
-        <div className="text-sm text-gray-500">{category.descriptionHK}</div>
+        <div className="text-lg text-gray-500">{category.descriptionHK}</div>
       </section>
 
       <div className="my-8 max-w-md mx-auto">
         <div className="tabs tabs-boxed p-2">
-          <a className="tab ">
+          <button className="tab ">
             <Trans>CategoryPage.hot</Trans>
-          </a>
-          <a className="tab tab-active">
+          </button>
+          <button className="tab tab-active">
             <Trans>CategoryPage.newest</Trans>
-          </a>
+          </button>
         </div>
       </div>
-      <ListPost posts={posts} />
+      <div className="">
+        <ListPost posts={posts} />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { ROLE } from "../Enum/APP_TYPE";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import firebaseApp from "../config/firebase";
+import { DateObj } from "../model/SystemType";
 
 const isLocalhost = (): boolean => {
   return (
@@ -40,12 +41,10 @@ const getRole = (): Promise<ROLE> => {
   return new Promise((resolve) => {
     returnIdTokenResult().then((res: any) => {
       if (res.success) {
-        if (res.role === "administrator") {
+        if (res.role === "ADMIN") {
           return resolve(ROLE.ADMIN);
-        } else if (res.role === "kol") {
-          return resolve(ROLE.KOL);
-        } else if (res.role === "customer") {
-          return resolve(ROLE.CUSTOMER);
+        } else if (res.role === "USER") {
+          return resolve(ROLE.USER);
         }
         return resolve(ROLE.DEFAULT);
       }
@@ -99,10 +98,70 @@ const timeStampToDisplayTimeString = (ts: any) => {
   );
 };
 
+const timeAgo = (date: number) => {
+  if (typeof date !== "undefined") {
+    const dateAgo = (new Date().valueOf() / 1000 - date) / (60 * 60 * 24);
+    let resStr = "";
+    if (dateAgo > 30 && dateAgo <= 365) {
+      resStr =
+        Math.floor(parseInt(dateAgo / 30)).toString() +
+        (Math.floor(parseInt(dateAgo / 30)) === 1 ? " month" : " months") +
+        " ago";
+    } else if (dateAgo > 365) {
+      resStr =
+        Math.floor(parseInt(dateAgo / 365)).toString() +
+        (Math.floor(parseInt(dateAgo / 365)) === 1 ? " year" : " years") +
+        " ago";
+    } else if (dateAgo > 0 && dateAgo < 1) {
+      if (new Date().valueOf() / 1000 - date < 3600) {
+        resStr = Math.floor(
+          (new Date().valueOf() / 1000 - date) / 60
+        ).toString();
+        resStr +=
+          Math.floor((new Date().valueOf() / 1000 - date) / 60) === 1
+            ? " minute"
+            : " minutes" + " ago";
+      } else {
+        resStr =
+          Math.floor((new Date().valueOf() / 1000 - date) / 3600).toString() +
+          (Math.floor((new Date().valueOf() / 1000 - date) / 3600) === 1
+            ? " hour"
+            : " hours") +
+          " ago";
+      }
+    } else {
+      resStr =
+        Math.floor(dateAgo).toString() +
+        (Math.floor(parseInt(String(dateAgo))) === 1 ? " day" : " days") +
+        " ago";
+    }
+    return resStr;
+  } else {
+    return "Just Now";
+  }
+};
+
+const getDistinctValue = (array: any[], key: string): any[] => {
+  try {
+    // check whether the array include this key
+    if (array[0].hasOwnProperty(key)) {
+      return array
+        .map((item) => item[key])
+        .filter((value, index, self) => self.indexOf(value) === index);
+    }
+    return [];
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
 export {
   timeStampToDisplayTimeString,
   getUserLang,
   isLocalhost,
   getRole,
+  timeAgo,
   isAuth,
+  getDistinctValue,
 };

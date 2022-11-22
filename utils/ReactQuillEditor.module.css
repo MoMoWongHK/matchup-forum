@@ -1,0 +1,300 @@
+.ReactQuillEditor {
+    /*padding-top: 25px;*/
+}
+
+.ReactQuillEditor > div > div:nth-child(2) {
+    min-height: 400px;
+    max-height: 555px;
+    border-radius: 0 0 0.75em 0.75em;
+    border: solid #e8e8e8 1px !important;
+    background-color: white;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div:nth-child(1) {
+    min-height: 400px;
+    max-height: 555px;
+    left: 0 !important;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div {
+    left: 20px !important;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > p {
+    /*font-size: 12px;*/
+    /*font-weight: 100;*/
+    /*line-height: 2;*/
+    margin: 0 !important;
+    font-size: 12px;
+    line-height: 1.7em;
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+    padding: 0;
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > ol > li {
+    line-height: 2;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > iframe {
+    width: 100%;
+    max-height: 305px;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > h1 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 2em;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > h2 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > h3 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 25px 0 5px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > h4 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 1.2em;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > p > h1 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 2em;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > p > h2 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > p > h3 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 15px 0 5px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > p > h4 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 1.2em;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > audio {
+    width: 115px;
+    display: inline-block;
+    height: 35px;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > blockquote {
+    /*font-style: italic;*/
+    font-weight: 555;
+    background: #e9f3fd;
+    border-radius: 3px;
+    border-left: 5px solid #80bcfd;
+    margin: 30px 0;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > pre {
+    font-size: 14px;
+    background-color: #fafafa;
+    border: #e8e8e8 solid 1px;
+    padding: 5px;
+    line-height: 1.5;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > ul > li {
+    line-height: 2.5;
+    font-size: 12px;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > ol > li {
+    line-height: 2.5;
+    font-size: 12px;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > p > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 450px;
+    display: inline-block;
+    margin: 15px auto;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 450px;
+    display: inline-block;
+    margin: 15px auto;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 400px;
+    display: inline-block;
+    margin: 15px auto;
+}
+
+.ReactQuillEditor > div > div:nth-child(2) > div > ul {
+    font-size: 16px;
+    /*font-weight: bold;*/
+    line-height: 2;
+}
+
+.ReactQuillEditorComment {
+    padding-top: 25px;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) {
+    min-height: 200px;
+    max-height: 555px;
+    border-radius: 0 0 0.75em 0.75em;
+    border: solid #e8e8e8 1px !important;
+    background-color: white;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div {
+    min-height: 200px;
+    max-height: 555px;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > p {
+    font-size: 12px;
+    font-weight: 100;
+    line-height: 2;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > ol > li {
+    line-height: 2;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > iframe {
+    width: 100%;
+    max-height: 305px;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > h1 {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 2em;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > h2 {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > h3 {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 15px 0 5px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > h4 {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 1.2em;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > blockquote {
+    font-style: italic;
+    font-weight: 555;
+    background: #e9f3fd;
+    border-radius: 3px;
+    border-left: 5px solid #80bcfd;
+    margin: 30px 0;
+    padding: 20px;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > pre {
+    font-size: 14px;
+    background-color: #fafafa;
+    border: #e8e8e8 solid 1px;
+    padding: 5px;
+    line-height: 1.5;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > ul > li {
+    line-height: 2;
+    font-size: 16px;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > p > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 400px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ReactQuillEditorComment > div > div:nth-child(2) > div > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 400px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.CustomToolbar {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+}

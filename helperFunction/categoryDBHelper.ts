@@ -15,6 +15,7 @@ const getCategory = (
       success: false;
     }
 > => {
+  console.log(cateID);
   return new Promise(async (resolve) => {
     await getDoc(doc(db, "Category", cateID))
       .then((doc: any) => {

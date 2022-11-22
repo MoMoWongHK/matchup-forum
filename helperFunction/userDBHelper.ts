@@ -1,4 +1,6 @@
 import {
+  arrayRemove,
+  arrayUnion,
   collection,
   doc,
   getDoc,
@@ -7,10 +9,9 @@ import {
   limit,
   orderBy,
   query,
-  where,
+  updateDoc,
 } from "firebase/firestore";
 import firebaseApp from "../config/firebase";
-import { Post } from "../model/Post";
 import { User } from "../model/User";
 
 const db = getFirestore(firebaseApp);
@@ -46,6 +47,47 @@ const getUserBasicInfo = (
         });
       })
       .catch((err: any) => {
+        return resolve({
+          success: false,
+        });
+      });
+  });
+};
+
+export enum SubscribedDirection {
+  ADD,
+  REMOVE,
+}
+
+/**
+ * update member Subscribed object
+ * @param {string} uid - firebase uid
+ * @param {string} channelID - the props will update
+ * @param {SubscribedDirection} direction - the props will update
+ */
+
+const updateUserSubscribed = (
+  uid: string,
+  channelID: string,
+  direction: SubscribedDirection
+): Promise<{
+  success: boolean;
+}> => {
+  return new Promise(async (resolve) => {
+    await updateDoc(doc(db, "User", uid), {
+      subscribed:
+        direction === SubscribedDirection.ADD
+          ? arrayUnion(channelID)
+          : arrayRemove(channelID),
+    })
+      .then((doc: any) => {
+        return resolve({
+          success: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        //TODO log error
         return resolve({
           success: false,
         });
@@ -127,4 +169,4 @@ const getUsers = (
   });
 };
 
-export { getUser, getUsers, getUserBasicInfo };
+export { getUser, getUsers, updateUserSubscribed, getUserBasicInfo };

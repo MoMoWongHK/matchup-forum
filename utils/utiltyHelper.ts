@@ -104,13 +104,17 @@ const timeAgo = (date: number) => {
     let resStr = "";
     if (dateAgo > 30 && dateAgo <= 365) {
       resStr =
-        Math.floor(parseInt(dateAgo / 30)).toString() +
-        (Math.floor(parseInt(dateAgo / 30)) === 1 ? " month" : " months") +
+        Math.floor(parseInt(String(dateAgo / 30))).toString() +
+        (Math.floor(parseInt(String(dateAgo / 30))) === 1
+          ? " month"
+          : " months") +
         " ago";
     } else if (dateAgo > 365) {
       resStr =
-        Math.floor(parseInt(dateAgo / 365)).toString() +
-        (Math.floor(parseInt(dateAgo / 365)) === 1 ? " year" : " years") +
+        Math.floor(parseInt(String(dateAgo / 365))).toString() +
+        (Math.floor(parseInt(String(dateAgo / 365))) === 1
+          ? " year"
+          : " years") +
         " ago";
     } else if (dateAgo > 0 && dateAgo < 1) {
       if (new Date().valueOf() / 1000 - date < 3600) {

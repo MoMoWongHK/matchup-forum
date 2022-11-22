@@ -8,8 +8,8 @@ try {
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { addMember } from "./helperFunction/userDBHelper";
-import { memberInit } from "./modal/Member";
+import { addUser } from "./helperFunction/userDBHelper";
+import { userInit } from "./modal/User";
 import { updatePostCount } from "./helperFunction/categoryDBHelper";
 import {
   updateCommentCount,
@@ -34,14 +34,14 @@ app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-exports.newMember = functions
+exports.newUser = functions
   .region("asia-east2")
   .auth.user()
   .onCreate(async (user: any) => {
     try {
       const uid = user.uid;
 
-      addMember(uid, memberInit)
+      addUser(uid, userInit)
         .then((result) => {
           return 0;
         })

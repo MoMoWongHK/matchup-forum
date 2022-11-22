@@ -71,3 +71,16 @@ export const examplePost: Post[] = [
     text: "This is my first post haha",
   },
 ];
+
+export const PostDefault: Post = {
+  id: "",
+  cateID: "",
+  createDate: new Date(),
+  createUserID: "",
+  numOfLike: 0,
+  numOfShare: 0,
+  numOfComment: 0,
+  title: "",
+  type: POST_TYPE.TEXT,
+  text: "",
+};

@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { NavButton } from "./NavButton";
 import {
-  faComment as faCommentAfter,
-  faFolder as faFolderAfter,
   faIdBadge as faIdBadgeAfter,
-  faBell as faBellAfter,
-  faFile as faFileAfter,
-  faUser as faUserAfter,
-  faCrown,
   faHouse,
-  faSearch,
   faLock,
   faLockOpen,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faComment,
-  faIdBadge,
-  faFile,
-} from "@fortawesome/free-regular-svg-icons";
+import { faIdBadge } from "@fortawesome/free-regular-svg-icons";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { ROLE } from "../Enum/APP_TYPE";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 import { getRole, isAuth } from "../utils/utiltyHelper";
 
 export enum NavButtonGroupDir {
@@ -70,22 +59,6 @@ export const NavButtonGroup: React.FC<NavButtonGroupProps> = ({ dir }) => {
             icon={faHouse}
             i18Text={t("BottomAppBar.homepage")}
             path={""}
-          />
-
-          <NavButton
-            visible={true}
-            icon={faComment}
-            iconAfter={faCommentAfter}
-            i18Text={t("BottomAppBar.chat")}
-            path={"c"}
-          />
-
-          <NavButton
-            visible={true}
-            icon={faFile}
-            iconAfter={faFileAfter}
-            i18Text={t("BottomAppBar.job")}
-            path={"j"}
           />
 
           <NavButton

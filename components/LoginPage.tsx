@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Banner, BannerContainer } from "../BannerContainer";
+import { Trans, useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -48,6 +48,7 @@ interface LOGIN_CREDENTIALS_TYPE {
 
 export const LoginPage: NextPage = (props) => {
   const router = useRouter();
+  const { t } = useTranslation("common");
   const dispatch = useDispatch();
   const [pageType, setPageType] = useState<LoginPageType>(LoginPageType.MAIN);
 
@@ -77,7 +78,7 @@ export const LoginPage: NextPage = (props) => {
     )
       .then((userCredential) => {
         if (auth.currentUser) {
-          localStorage.setItem("matchup-require-login", "false");
+          // localStorage.setItem("matchup-require-login", "false");
           auth.currentUser
             .getIdTokenResult()
             .then((idTokenResult) => {
@@ -198,16 +199,19 @@ export const LoginPage: NextPage = (props) => {
         </button>
         <div>
           {/* <img className="md:hidden block w-28 mx-auto mb-4" src={logo} /> */}
-          <h2 className="text-3xl font-semibold mb-4">RegForm.login</h2>
-          <p className="text-sm text-gray-400">RegForm.welcome-message 👋🏻</p>
+          <h2 className="text-3xl font-semibold mb-4">
+            <Trans>RegForm.login</Trans>
+          </h2>
         </div>
         <form className="py-8 text-base leading-6 space-y-4 text-gray-600 text-md sm:text-lg sm:leading-7">
           <div className="flex flex-col">
-            <div className="leading-loose font-medium">RegForm.email</div>
+            <div className="leading-loose font-medium">
+              <Trans>RegForm.email</Trans>
+            </div>
             <input
               type="text"
               className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-              placeholder={"RegForm.email-placeholder"}
+              placeholder={t("RegForm.email-placeholder")}
               disabled={isLoading}
               value={loginCredentials.email}
               onChange={(e) =>
@@ -219,11 +223,13 @@ export const LoginPage: NextPage = (props) => {
             />
           </div>
           <div className="flex flex-col">
-            <div className="leading-loose font-medium">RegForm.password</div>
+            <div className="leading-loose font-medium">
+              <Trans>RegForm.password</Trans>
+            </div>
             <input
               type="password"
               className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-              placeholder={"RegForm.password-placeholder"}
+              placeholder={t("RegForm.password-placeholder")}
               disabled={isLoading}
               value={loginCredentials.password}
               onChange={(e) =>
@@ -246,18 +252,24 @@ export const LoginPage: NextPage = (props) => {
             onClick={(e) => loginHandler()}
           >
             {isLoading ? (
-              <div>RegForm.login-loading</div>
+              <div>
+                <Trans>RegForm.login-loading</Trans>
+              </div>
             ) : (
-              <div>RegForm.login</div>
+              <div>
+                <Trans>RegForm.login</Trans>
+              </div>
             )}
           </button>
           <div className="text-sm flex flex-row gap-1">
-            <p className="text-gray-600">RegForm.no-account</p>
+            <p className="text-gray-600">
+              <Trans>RegForm.no-account</Trans>
+            </p>
             <button
               onClick={() => setPageType(LoginPageType.SIGNUP_EMAIL)}
               className=" text-primary font-medium cursor-pointer"
             >
-              RegForm.sign-up
+              <Trans>RegForm.sign-up</Trans>
             </button>
           </div>
         </form>
@@ -275,12 +287,15 @@ export const LoginPage: NextPage = (props) => {
       </button>
       <div>
         {/* <img className="md:hidden block w-28 mx-auto mb-4" src={logo} /> */}
-        <h2 className="text-3xl font-semibold mb-4">RegForm.signup</h2>
-        <p className="text-sm text-gray-400">RegForm.welcome-message 👋🏻</p>
+        <h2 className="text-3xl font-semibold mb-4">
+          <Trans>RegForm.signup</Trans>
+        </h2>
       </div>
       <div className="pb-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 pt-4">
         <div className="flex flex-col">
-          <div className="leading-loose">NewKOLReg.email</div>
+          <div className="leading-loose">
+            <Trans>NewKOLReg.email</Trans>
+          </div>
           <input
             type="email"
             placeholder={"NewKOLReg.email-placeholder"}
@@ -295,7 +310,9 @@ export const LoginPage: NextPage = (props) => {
           />
         </div>
         <div className="flex flex-col">
-          <div className="leading-loose">NewKOLReg.password</div>
+          <div className="leading-loose">
+            <Trans>NewKOLReg.password</Trans>
+          </div>
           <div className="form-control">
             <div className="input-group">
               <input
@@ -334,7 +351,7 @@ export const LoginPage: NextPage = (props) => {
           disabled={isLoading}
           onClick={(e) => registerHandler()}
         >
-          RegForm.signup
+          <Trans>RegForm.signup</Trans>
         </button>
       </div>
     </div>

@@ -9,9 +9,13 @@ export enum GENDER {
   U = "U",
 }
 
-export enum INDUSTRY {}
+export enum INDUSTRY {
+  DEFAULT,
+}
 
-export enum LOCATION {}
+export enum LOCATION {
+  DEFAULT,
+}
 
 export interface DateObj {
   seconds: number;

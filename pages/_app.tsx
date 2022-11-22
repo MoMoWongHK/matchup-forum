@@ -5,7 +5,6 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import { wrapper } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Header } from "../components/Header";
 import {
   NavButtonGroup,
@@ -15,7 +14,8 @@ import { Footer } from "../components/Footer";
 import { ForumCate } from "../components/ForumCate";
 import { appWithTranslation } from "next-i18next";
 import { SUPPORTED_REDUX_FUNCTIONS } from "../redux/SUPPORTED_REDUX_FUNCTION";
-import type { GetStaticPropsContext } from "next";
+
+import "../config/i18n";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const store = useStore();

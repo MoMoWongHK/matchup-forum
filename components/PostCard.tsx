@@ -69,9 +69,8 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
   return (
     <>
       <div
-        className="w-full grid py-2 px-4 mx-auto gap-2  "
+        className=" w-full grid py-2 px-4 mx-auto gap-2  "
         style={{ gridTemplateRows: "45px auto 45px" }}
-        onClick={() => router.push("/p/" + data.id)}
       >
         {/* avatar and name*/}
         <div className="grid" style={{ gridTemplateColumns: "40px auto 30px" }}>
@@ -85,13 +84,20 @@ export const PostCard: React.FC<PostCardProps> = ({ data }) => {
           <div className="text-gray-500">
             {postUser.userName}
             <span className="px-2 text-sm">
-              - {timeAgo(data.createDate.seconds)}
+              {/*// eslint-disable-next-line @typescript-eslint/ban-ts-comment //*/}
+              {/*@ts-ignore*/}
+              {"-" + timeAgo(data.createDate.seconds)}
             </span>
           </div>
         </div>
         {/* post title*/}
         <h2 className="font-bold text-lg max-h-20">
-          <div>{data.title}</div>
+          <div
+            className="cursor-pointer hover:underline "
+            onClick={() => router.push("/p/" + data.id)}
+          >
+            {data.title}
+          </div>
         </h2>
         {/* post content*/}
         <div className="max-h-48">

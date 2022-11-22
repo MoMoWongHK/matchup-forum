@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getUserLang } from "../utils/utiltyHelper";
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 
 interface NavButtonProps {
   visible: boolean;
@@ -26,7 +25,7 @@ export const NavButton: React.FC<NavButtonProps> = ({
   indicator,
 }) => {
   const isAfter = window.location.pathname === "/" + getUserLang() + "/" + path;
-  const { t } = useTranslation("common");
+
   return (
     <div
       className={classNames(" flex-1", {

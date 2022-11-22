@@ -1,0 +1,221 @@
+.ReactQuillDisplay {
+    width: 100%;
+    /*padding-top: 30px;*/
+}
+
+.ReactQuillDisplay > p {
+    margin: 0 !important;
+    font-size: 12px;
+    line-height: 1.7em;
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    letter-spacing: 0;
+    padding: 0;
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+.ReactQuillDisplay > ol > li {
+    line-height: 2;
+}
+
+.ReactQuillDisplay > iframe {
+    width: 100%;
+    min-height: 400px;
+}
+
+.ReactQuillDisplay * {
+    width: 100%;
+}
+
+.ReactQuillDisplay > audio {
+    width: 300px;
+    display: inline-block;
+}
+
+.ReactQuillDisplay > h1 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 2em;
+}
+
+.ReactQuillDisplay > h2 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.ReactQuillDisplay > h3 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 25px 0 5px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ReactQuillDisplay > h4 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 1.2em;
+}
+
+.ReactQuillDisplay > p > h1 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 2em;
+}
+
+.ReactQuillDisplay > p > h2 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.ReactQuillDisplay > p > h3 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 15px 0 5px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ReactQuillDisplay > p > h4 {
+    font-family: Microsoft JhengHei fixed, Helvetica Neue, Microsoft JhengHei,
+    Helvetica, Arial, sans-serif;
+    width: 100%;
+    padding: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
+    font-size: 1.2em;
+}
+
+.ReactQuillDisplay > blockquote {
+    /*font-style: italic;*/
+    font-weight: 600;
+    background: #e9f3fd;
+    border-radius: 3px;
+    border-left: 5px solid #80bcfd;
+    margin: 30px 0;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.ReactQuillDisplay > pre {
+    font-size: 14px;
+    background-color: #23241f;
+    border: #e8e8e8 solid 1px;
+    padding: 5px;
+    line-height: 1.5;
+    color: #f8f8f2;
+    overflow-x: scroll;
+}
+
+.ReactQuillDisplay > ul > li {
+    line-height: 2.5;
+    font-size: 12px;
+}
+
+.ReactQuillDisplay > ol > li {
+    line-height: 2.5;
+    font-size: 12px;
+}
+
+.ReactQuillDisplay > p > img:first-child {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.ReactQuillDisplay > img:first-child {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ReactQuillDisplay > p > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 400px;
+    display: inline-block;
+    margin: 15px auto;
+}
+
+.ReactQuillDisplay > div > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 400px;
+    display: inline-block;
+    margin: 15px auto;
+}
+
+.ReactQuillDisplay > img {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 400px;
+    display: inline-block;
+    margin: 15px auto;
+}
+
+.ReactQuillDisplay > .click-zoom {
+    max-width: 100%;
+    width: auto;
+    padding: 5px;
+    max-height: 400px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ReactQuillDisplay > section {
+    background-color: #e8e8e8 !important;
+}
+
+.ReactQuillDisplay > section > a:hover {
+    text-decoration: none !important;
+}
+
+.click-zoom input[type="checkbox"] {
+    display: none;
+}
+
+.click-zoom img {
+    margin: 100px;
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
+}
+
+.click-zoom input[type="checkbox"]:checked ~ img {
+    transform: scale(2);
+    cursor: zoom-out;
+}

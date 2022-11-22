@@ -11,6 +11,7 @@ export interface Comment {
   id: string;
   content: string;
   createDate: Date | DateObj;
+  createUserID: string;
   numOfLike: number;
   numOfComment: number;
   type: COMMENT_TYPE;
@@ -23,3 +24,29 @@ export enum COMMENT_TYPE {
   HIDDEN,
   ADMIN_REPLY,
 }
+
+export const CommentDefault: Comment = {
+  id: "",
+  content: "",
+  createDate: new Date(),
+  createUserID: "",
+  numOfLike: 0,
+  numOfComment: 0,
+  type: COMMENT_TYPE.COMMENT,
+  replyID: "",
+};
+
+export const CommentWithUserDefault: CommentWithUser = {
+  id: "",
+  content: "",
+  createDate: new Date(),
+  createUserID: "",
+  numOfLike: 0,
+  numOfComment: 0,
+  type: COMMENT_TYPE.COMMENT,
+  replyID: "",
+  user: {
+    avatarUrl: "",
+    userName: "",
+  },
+};

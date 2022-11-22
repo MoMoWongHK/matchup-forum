@@ -1,21 +1,21 @@
 import * as admin from "firebase-admin";
-import { Member, updateEmailState, updateGCMToken } from "../modal/Member";
+import { User, updateEmailState } from "../modal/User";
 
 const db = admin.firestore();
 
 /**
  * create member
  * @param {string} id - firebase uid
- * @param {Member} data - the props will add
+ * @param {User} data - the props will add
  */
-const addMember = (
+const addUser = (
   id: string,
-  data: Member
+  data: User
 ): Promise<{
   success: boolean;
 }> => {
   return new Promise((resolve) => {
-    db.collection("Member")
+    db.collection("User")
       .doc(id)
       .set({
         ...data,
@@ -40,14 +40,14 @@ const addMember = (
  * @param {string} id - firebase uid
  * @param {updateEmailState} data - the props will update
  */
-const updateMember = (
+const updateUser = (
   id: string,
-  data: updateEmailState | Member | updateGCMToken
+  data: updateEmailState | User
 ): Promise<{
   success: boolean;
 }> => {
   return new Promise((resolve) => {
-    db.collection("Member")
+    db.collection("User")
       .doc(id)
       .update({
         ...data,
@@ -67,19 +67,19 @@ const updateMember = (
   });
 };
 
-const getMember = async (
+const getUser = async (
   id: string
 ): Promise<
   | {
       success: true;
-      data: Member;
+      data: User;
     }
   | {
       success: false;
     }
 > => {
   return new Promise((resolve) => {
-    db.collection("Member")
+    db.collection("User")
       .doc(id)
       .get()
       .then((doc: any) => {
@@ -89,7 +89,7 @@ const getMember = async (
             data: {
               id: doc.id,
               ...doc.data(),
-            } as Member,
+            } as User,
           });
         }
         return resolve({
@@ -141,4 +141,4 @@ const isEmailRegistered = (
   });
 };
 
-export { addMember, updateMember, getMember, isEmailRegistered };
+export { addUser, updateUser, getUser, isEmailRegistered };

@@ -1,6 +1,9 @@
 import { DateObj, GENDER, INDUSTRY, LANGUAGE, LOCATION } from "./SystemType";
 
 export interface User {
+  avatarUrl: string;
+  bookmark: string[];
+  GCMToken: string[];
   id: string;
   uid: string;
   email: string;
@@ -13,4 +16,6 @@ export interface User {
   industry: INDUSTRY;
   location: LOCATION;
   lastSignIn: Date | DateObj;
+  subscribed: string[];
+  isConfirmEmail: boolean;
 }

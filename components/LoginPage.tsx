@@ -294,11 +294,11 @@ export const LoginPage: NextPage = (props) => {
       <div className="pb-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 pt-4">
         <div className="flex flex-col">
           <div className="leading-loose">
-            <Trans>NewKOLReg.email</Trans>
+            <Trans>RegForm.email</Trans>
           </div>
           <input
             type="email"
-            placeholder={"NewKOLReg.email-placeholder"}
+            placeholder={"RegForm.email-des"}
             className="input input-bordered w-full"
             value={newUserCredentials.email}
             onChange={(e) => {
@@ -311,13 +311,13 @@ export const LoginPage: NextPage = (props) => {
         </div>
         <div className="flex flex-col">
           <div className="leading-loose">
-            <Trans>NewKOLReg.password</Trans>
+            <Trans>RegForm.password</Trans>
           </div>
           <div className="form-control">
             <div className="input-group">
               <input
                 type={showPass ? "text" : "password"}
-                placeholder={"NewKOLReg.password-placeholder"}
+                placeholder={"RegForm.password-des"}
                 className="input input-bordered w-full"
                 value={newUserCredentials.password}
                 onChange={(e) =>

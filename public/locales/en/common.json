@@ -30,13 +30,11 @@
     "type-des": "Make it easier for advertisers to find you",
     "media": "Media (You need to verify afterwards)",
     "create-profile": "Create",
+    "signup": "Register",
     "require-login": "We are creating the best experience for you please wait for some while.",
     "require-login-org": "Please log in again",
     "auto-logout": "Kindly Log In again when you reach the login page, thank you!",
     "auto-jump-to-login": "The system will go to login page after 3 seconds",
-    "register-as-customer": "Register as Business or advertiser",
-    "register-as-customer-2": "Register as Business",
-    "register-as-customer-des": "After completing the registration, you need to perform email verification",
     "email": "Email *",
     "email-des": "Email will be used as the account for future login",
     "password": "Password *",
@@ -60,7 +58,8 @@
   },
   "CommentList": {
     "title": "Comments",
-    "comment-total": "comment/s in total"
+    "comment-total": "comment/s in total",
+    "no-comment-was-found": "No Comment"
   },
   "CommentCard": {
     "reply": "Reply"
@@ -71,5 +70,35 @@
     "login-required": "Login to add a comment",
     "send": "Send",
     "sending": "Sending"
+  },
+  "Modal": {
+    "cancel": "Cancel"
+  },
+  "NewPostModal": {
+    "post-title": "Title",
+    "post-content": "Content",
+    "title": "New Post",
+    "send": "Send",
+    "sending": "Sending",
+    "text": "Text",
+    "vote": "Vote"
+  },
+  "PostPage": {
+    "back": "Back"
+  },
+  "AppSetting": {
+    "about": "About Look4KOL",
+    "blog": "Blog",
+    "title": "App Setting",
+    "my-gcm-token": "My Connected Device",
+    "test-messaging": "Test App messaging",
+    "browser-not-support": "The device not support app messaging",
+    "you-rejected-gcm": "You have rejected our app messaging function on this device",
+    "test-now": "Test Now",
+    "message-sent": "The message has been sent and it may take one to two minutes",
+    "not-receive": "Haven't received it yet? You can test again it after one minute.",
+    "wait-to-test": "Sent",
+    "notification": "Notification",
+    "language": "Language"
   }
 }

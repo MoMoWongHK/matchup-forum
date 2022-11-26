@@ -2,12 +2,12 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { createWrapper, Context, HYDRATE } from "next-redux-wrapper";
 import { firebaseReducer } from "react-redux-firebase";
 import thunkMiddleware from "redux-thunk";
-import modal from "./ModalControllerStore";
+import modal, { modalInitStateType } from "./ModalControllerStore";
 
 import { createLogger } from "redux-logger";
 import { persistReducer } from "redux-persist";
-import systemManager from "./SystemManager";
-import loginManager from "./LoginManger";
+import systemManager, { systemMangerState } from "./SystemManager";
+import loginManager, { loginInitStateType } from "./LoginManger";
 
 const bindMiddleware = (middleware: any) => {
   const loggerMiddleware = createLogger({
@@ -28,6 +28,13 @@ export const combinedReducer = combineReducers({
   LoginManager: loginManager,
   firebase: firebaseReducer,
 });
+
+export interface ApplicationState {
+  modal: modalInitStateType;
+  SystemManager: systemMangerState;
+  LoginManager: loginInitStateType;
+  firebase: any;
+}
 
 export type AppState = ReturnType<typeof combinedReducer>;
 

@@ -14,7 +14,7 @@ import { Footer } from "../components/Footer";
 import { ForumCate } from "../components/ForumCate";
 import { appWithTranslation } from "next-i18next";
 import { SUPPORTED_REDUX_FUNCTIONS } from "../redux/SUPPORTED_REDUX_FUNCTION";
-
+import { ModalProvider } from "../provider/ModalProvider";
 import "../config/i18n";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -37,17 +37,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <PersistGate persistor={p} loading={<></>}>
+      <ModalProvider />
       <main>
         <header>
           <Header />
         </header>
-        <div className="lg:grid" style={{ gridTemplateColumns: "300px auto" }}>
-          <div className="hidden lg:inline-block mt-15">
+        <div className="md:grid" style={{ gridTemplateColumns: "200px auto" }}>
+          <div className="hidden md:inline-block mt-15">
             {/* forum cate*/}
             <div>
               <ForumCate />
             </div>
-            <NavButtonGroup dir={NavButtonGroupDir.COL} />
           </div>
           <div
             className="w-full min-h-1/2 mt-2 mx-auto overflow-x-hidden overflow-y-scroll"

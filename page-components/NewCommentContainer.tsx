@@ -27,7 +27,7 @@ export const NewCommentContainer: React.FC = () => {
 
   const [comment, setComment] = useState<string>("");
   const [replyID, setReplyID] = useState<string>("");
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("");
 
   const [sending, setSending] = useState<boolean>(false);
 
@@ -35,6 +35,8 @@ export const NewCommentContainer: React.FC = () => {
     setSending(true);
     addComment(id as string, auth.uid, comment, replyID).then((result) => {
       if (result.success) {
+        // setMyOldComment(result.data);
+        // setHasOldComment(true);
       }
     });
   };

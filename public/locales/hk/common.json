@@ -30,13 +30,11 @@
     "type-des": "讓廣告商更易找到你",
     "media": "媒體 (之後你需要驗證)",
     "create-profile": "建立",
+    "signup": "註冊",
     "require-login": "我們正在為您創造最佳體驗，請稍等片刻。",
     "require-login-org": "請重新登入",
     "auto-logout": "請再次登錄，謝謝！ 系統將會在3秒後自動登出",
     "auto-jump-to-login": "系統將會在3秒後進入登入界面",
-    "register-as-customer": "以廣告商註冊",
-    "register-as-customer-2": "以廣告商註冊",
-    "register-as-customer-des": "完成註冊後，你需要進行Email驗證",
     "email": "電子郵件 *",
     "email-des": "Email將會用作日後登入的帳號",
     "password": "密碼 *",
@@ -61,7 +59,8 @@
   },
   "CommentList": {
     "title": "回覆",
-    "comment-total": "個回覆"
+    "comment-total": "個回覆",
+    "no-comment-was-found": "未有回覆"
   },
   "CommentCard": {
     "reply": "回覆"
@@ -72,5 +71,35 @@
     "login-required": "登入以新增評論",
     "send": "發送",
     "sending": "發送中"
+  },
+  "Modal": {
+    "cancel": "取消"
+  },
+  "NewPostModal": {
+    "post-title": "標題",
+    "post-content": "貼文內容",
+    "title": "新增貼文",
+    "send": "發送",
+    "sending": "發送中",
+    "text": "文字",
+    "vote": "投票"
+  },
+  "PostPage": {
+    "back": "返回"
+  },
+  "AppSetting": {
+    "about": "關於Look4KOL",
+    "blog": "網誌",
+    "title": "系統設定",
+    "my-gcm-token": "我的已連結裝置",
+    "test-messaging": "測試信息推送",
+    "browser-not-support": "本裝置不支援信息推送功能",
+    "you-rejected-gcm": "你已經禁止我們在裝置的本信息推送功能",
+    "test-now": "立即測試",
+    "message-sent": "信息已經發送，可能需要一至兩分鐘才會收到。",
+    "not-receive": "還未收到嗎？你可以在一分鐘後重新測試。",
+    "wait-to-test": "已經發送",
+    "notification": "信息設定",
+    "language": "語言"
   }
 }

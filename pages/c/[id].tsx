@@ -81,7 +81,8 @@ const Category: NextPage = () => {
     if (isAuth(auth)) {
       getUser(auth.uid).then((result) => {
         if (result.success) {
-          setFollowed(result.data.subscribed.includes(id as string));
+          const isFol = result.data.subscribed.includes(id as string);
+          setFollowed(isFol);
         }
       });
     }
@@ -105,7 +106,7 @@ const Category: NextPage = () => {
   const openCreatePostModal = (state: any) => {
     dispatch({
       type: SUPPORTED_REDUX_FUNCTIONS.TOGGLE_MODAL,
-      typeOfModal: SUPPORTED_MODAL_TYPE.TEST_MODAL,
+      typeOfModal: SUPPORTED_MODAL_TYPE.ADD_POST_MODAL,
       returnFn: state.returnFn,
       metaData: state.metaData,
     });
@@ -137,7 +138,7 @@ const Category: NextPage = () => {
       <div className="my-8 max-w-md mx-auto">
         <div className="tabs tabs-boxed p-2">
           <button
-            className={classNames("tab w-1/2", {
+            className={classNames("tab h-12 w-1/2", {
               "tab-active": condition.orderBy === OrderBy.HOT,
             })}
             onClick={() =>
@@ -150,7 +151,7 @@ const Category: NextPage = () => {
             <Trans>CategoryPage.hot</Trans>
           </button>
           <button
-            className={classNames("tab w-1/2", {
+            className={classNames("tab h-12 w-1/2", {
               "tab-active": condition.orderBy === OrderBy.NEWEST,
             })}
             onClick={() =>

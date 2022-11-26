@@ -1,13 +1,12 @@
 import { Reducer } from "react";
 import { SUPPORTED_MODAL_TYPE } from "../utils/ModalType";
 import Modal from "../model/Modal";
-import { MODAL_TYPE } from "../Enum/MODAL_TYPE";
 import { SUPPORTED_REDUX_FUNCTIONS } from "./SUPPORTED_REDUX_FUNCTION";
 
 interface actionTypes {
   type: string;
   Modal: Modal;
-  typeOfModal: MODAL_TYPE;
+  typeOfModal: SUPPORTED_MODAL_TYPE;
   returnFn: () => void | null;
   metaData: null;
   uploadPath?: string;
@@ -45,7 +44,10 @@ const ModalControllerStore: Reducer<modalInitStateType, actionTypes> = (
         uploadPath: action.uploadPath,
         limit: action.limit,
       };
-    } else if (action.typeOfModal === SUPPORTED_MODAL_TYPE.TEST_MODAL) {
+    } else if (
+      action.typeOfModal === SUPPORTED_MODAL_TYPE.TEST_MODAL ||
+      action.typeOfModal === SUPPORTED_MODAL_TYPE.ADD_POST_MODAL
+    ) {
       return {
         ...state,
         Modal: new Modal(action.typeOfModal, true),

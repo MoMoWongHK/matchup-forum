@@ -2,11 +2,12 @@ import React, { ReactChild, useEffect, useRef, useState } from "react";
 import { i18n } from "i18next";
 import { Trans } from "react-i18next";
 import classNames from "classnames";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
+import { SUPPORTED_REDUX_FUNCTIONS } from "../redux/SUPPORTED_REDUX_FUNCTION";
 
 interface ModalButton {
-  text: i18n;
+  text: string;
   color: "primary" | "secondary" | "error" | "success" | "info";
   onClick: (params?: any) => void;
   size: "32" | "64" | "full";
@@ -14,7 +15,6 @@ interface ModalButton {
 
 interface Modal {
   isOpen: boolean;
-  closeModal: () => void;
   buttons: ModalButton[];
   title: string;
   modalSize: "md" | "2xl" | "3xl" | "4xl" | "7xl";
@@ -28,9 +28,8 @@ interface Modal {
   haveLoading?: boolean;
 }
 
-const Modal: React.FC<Modal> = ({
+const CustomModal: React.FC<Modal> = ({
   isOpen,
-  closeModal,
   title,
   modalSize,
   buttons,
@@ -41,7 +40,7 @@ const Modal: React.FC<Modal> = ({
   haveLoading,
 }) => {
   const refButton = useRef<any>(null);
-
+  const dispatch = useDispatch();
   const screenWidth = useSelector((state: any) => {
     return state.SystemManager.screenWidth;
   });
@@ -52,11 +51,18 @@ const Modal: React.FC<Modal> = ({
 
   const minSwipeDistance = window.innerHeight / 2 - 100;
 
+  const closeModalFunc = () => {
+    dispatch({
+      type: SUPPORTED_REDUX_FUNCTIONS.CLOSE_MODAL,
+    });
+  };
+
   const onTouchStart = (e: any) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientY);
   };
   const onTouchMove = (e: any) => setTouchEnd(e.targetTouches[0].clientY);
+
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
@@ -68,26 +74,12 @@ const Modal: React.FC<Modal> = ({
     }
   };
 
-  const closeModalFunc = () => {
-    // document.getElementsByTagName("body")[0].style.overflow = "scroll"
-    closeModal();
-  };
-  const detectClickClose = (e: any) => {
-    if (document.getElementById("modal-box")?.contains(e.target) === false) {
-      closeModalFunc();
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("click", detectClickClose);
-
-    // return window.removeEventListener("click", detectClickClose)
-  }, []);
   const [isVisible, onCycle] = useCycle(true, false);
 
   return (
     <div>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+      {/*// @ts-ignore*/}
       <AnimatePresence>
         {isVisible && (
           <div className="modal modal-open">
@@ -102,7 +94,7 @@ const Modal: React.FC<Modal> = ({
               dragConstraints={{ top: 0, bottom: swiped ? 100 : 0 }}
               dragElastic={{ top: 0, bottom: 1 }}
               className={classNames(
-                "w-full h-2/3 md:h-auto",
+                "w-full h-3/4 md:h-auto",
                 `md:max-w-${modalSize}`
               )}
             >
@@ -167,9 +159,10 @@ const Modal: React.FC<Modal> = ({
 
                 {/*Bottom Button Starts*/}
                 <div className="absolute safe-are-detection-bottom-absolute right-3 w-full bg-white md:px-8 px-0 pb-2">
-                  {buttons.map((button) => {
+                  {buttons.map((button, index) => {
                     return (
                       <button
+                        key={"btn" + index}
                         onClick={() => {
                           if (haveLoading) {
                             setIsLoading(true);
@@ -210,7 +203,7 @@ const Modal: React.FC<Modal> = ({
                       closeModalFunc();
                     }}
                   >
-                    <Trans>ContactKOLModal.cancel</Trans>
+                    <Trans>Modal.cancel</Trans>
                   </button>
                 </div>
                 {/*Bottom Button Ends*/}
@@ -223,4 +216,4 @@ const Modal: React.FC<Modal> = ({
   );
 };
 
-export default Modal;
+export default CustomModal;

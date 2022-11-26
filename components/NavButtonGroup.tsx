@@ -24,7 +24,7 @@ interface NavButtonGroupProps {
 }
 
 export const NavButtonGroup: React.FC<NavButtonGroupProps> = ({ dir }) => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("");
   const auth = useSelector((state: any) => {
     return state.LoginManager.auth;
   });
@@ -44,7 +44,7 @@ export const NavButtonGroup: React.FC<NavButtonGroupProps> = ({ dir }) => {
 
   if (isAuth(auth)) {
     return (
-      <div className="bg-[#fdf8f8] h-full">
+      <div className="bg-[#fafafa] h-full">
         <div
           style={{
             paddingBottom: "env(safe-area-inset-bottom)",

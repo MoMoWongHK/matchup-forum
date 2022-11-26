@@ -37,14 +37,13 @@ export const CommentList: React.FC<CommentListProps> = ({
     return state.LoginManager.auth;
   });
 
-  const [comments, setComments] = useState<CommentWithUser[]>(draftComment);
+  const [comments, setComments] = useState<CommentWithUser[]>([]);
   const [isLoaded, setIsLoaded] = useState<boolean>(true);
 
   useEffect(() => {
     if (postID) {
       getComments(postID, 20).then((result) => {
         if (result.success) {
-          console.log(result);
           setComments(result.data);
         }
       });
@@ -66,12 +65,21 @@ export const CommentList: React.FC<CommentListProps> = ({
         <NewCommentContainer />
       </div>
 
+      <hr />
+
       {isLoaded &&
+        comments.length > 0 &&
         comments.map((e) => {
           if ((isAuth(auth) && e.createUserID !== auth.uid) || !isAuth(auth)) {
             return <CommentItem key={e.id} c={e} />;
           }
         })}
+
+      {isLoaded && comments.length === 0 && (
+        <div className="text-center text-sm rounded-lg my-4 p-2 bg-gray-100 text-gray-700 border border-gray-200">
+          <Trans>CommentList.no-comment-was-found</Trans>
+        </div>
+      )}
     </div>
   );
 };

@@ -33,7 +33,35 @@ module.exports = {
         "fade-in-down": "fade-in-down 0.5s ease-out",
         "fade-right-left": "fade-right-left 0.5s ease-out",
       },
+      textColor: {
+        "blue-default": "#0369a1",
+        "dark-blue-default": "#0c4a6e",
+      },
+      backgroundColor: {
+        "blue-default": "#0369a1",
+        "dark-blue-default": "#0c4a6e",
+      },
+      borderColor: {
+        "blue-default": "#0369a1",
+      },
     },
+  },
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+          link: "#64748B",
+          ghost: "#64748B",
+          "ghost-hover": "#c1c8d4",
+          "ghost-active": "#ffe0e6",
+          primary: "#0369a1",
+          "primary-active": "#075985",
+          "primary-focus": "#075985",
+          "primary-hover": "#075985",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 };

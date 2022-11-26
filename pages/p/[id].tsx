@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { CommentList } from "../../components/CommentList";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
 import { getPost } from "../../helperFunction/postDBHelper";
 import { Post, PostDefault } from "../../model/Post";
 import { PostDisplay } from "../../page-components/PostDisplay";
@@ -10,6 +9,7 @@ import { timeAgo } from "../../utils/utiltyHelper";
 import { getUserBasicInfo } from "../../helperFunction/userDBHelper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { Trans } from "react-i18next";
 
 const PostPage: NextPage = () => {
   const router = useRouter();
@@ -58,6 +58,9 @@ const PostPage: NextPage = () => {
           }}
         >
           <FontAwesomeIcon width="16" icon={faChevronLeft} />
+          <span className="mx-2 font-bold">
+            <Trans>PostPage.back</Trans>
+          </span>
         </button>
       </div>
 

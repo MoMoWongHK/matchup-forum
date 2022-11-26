@@ -2,23 +2,406 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-  overflow: hidden;
+html {
+    scroll-behavior: smooth;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/*html,*/
-/*body {*/
-/*  padding: 0;*/
-/*  margin: 0;*/
-/*  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
-/*    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
+button:focus {
+    outline: none !important;
+}
+
+body {
+    overflow-x: hidden !important;
+    min-height: 92vh;
+}
+
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+    background-color: #e8e8e8 !important;
+    padding: 0 0 0 20px !important;
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c9c9c9;
+}
+
+input:focus {
+    outline: none;
+}
+
+.safe-are-detection-top {
+    padding-top: env(safe-area-inset-top);
+}
+
+.safe-are-detection-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-are-detection-bottom-absolute {
+    bottom: calc(env(safe-area-inset-bottom) + 2px);
+}
+
+button:focus {
+    outline: none !important;
+    /*animation: onPressButton 90ms ease 0s forwards;*/
+}
+
+@keyframes modalfadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes modalfadeInUp {
+    from {
+        transform: translate3d(0, 25px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0.4;
+    animation-name: modalfadeInUp;
+    -webkit-animation-name: modalfadeInUp;
+}
+
+dialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: -webkit-fit-content;
+    height: fit-content;
+    margin: auto;
+    border: solid;
+    /*padding: calc(env(safe-area-inset-top) + 1em) 1em calc(env(safe-area-inset-top) + 1em) 1em;*/
+    background: white;
+    color: black;
+    display: block;
+}
+
+dialog:not([open]) {
+    display: none;
+}
+
+dialog + .backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+._dialog_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+dialog.fixed {
+    position: fixed;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.slide {
+    border-radius: 1.5rem;
+}
+
+@keyframes onPressButton {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0.95);
+        brightness: 1.1;
+    }
+}
+
+@media only screen and (max-width: 762px) {
+    @supports (-moz-appearance: none) {
+        dialog {
+            border-radius: 0.75em 0.75em 0 0;
+            min-height: 100vh;
+            min-width: 100vw;
+            margin: auto;
+            animation: fadeInUp 250ms ease-in-out 0s forwards;
+            padding: 10px !important;
+            border: solid 1px #d2d2d2;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+    }
+
+    dialog {
+        border-radius: 0.75em 0.75em 0 0;
+        min-height: 100vh;
+        min-width: 100vw;
+        margin: auto;
+        animation: fadeInUp 250ms ease-in-out 0s forwards;
+        padding: 10px !important;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+        }
+    }
+}
+
+@media only screen and (min-width: 763px) {
+    @supports (-moz-appearance: none) {
+        dialog {
+            animation: fadeInUpXL 180ms ease-in-out 0s forwards;
+            border: solid 1px #d2d2d2;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+    }
+
+    dialog {
+        animation: fadeInUpXL 180ms ease-in-out 0s forwards;
+    }
+
+    @keyframes fadeInUpXL {
+        from {
+            opacity: 0.5;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+        }
+    }
+}
+
+.carousel .slider-wrapper:hover {
+    opacity: 0.75;
+}
+
+.carousel.carousel-slider .control-arrow {
+    height: 40px !important;
+    padding: 0 !important;
+    width: 40px !important;
+    top: 40% !important;
+    border-radius: 0.75em !important;
+    right: 3px !important;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+    background: rgba(0, 0, 0, 0.6) !important;
+    background-color: white !important;
+    margin: 0 6px;
+}
+
+.carousel .control-next.control-arrow:before {
+    border-left: 8px solid #232323 !important;
+}
+
+.carousel .control-prev.control-arrow:before {
+    border-right: none !important;
+}
+
+.carousel .control-prev.control-arrow:before {
+    border-left: 8px solid #232323 !important;
+    transform: rotate(180deg);
+}
+
+/*.carousel.carousel-slider .control-arrow{*/
+/*    border-radius: 2em !important;*/
+/*    height: 30px !important;*/
+/*    top: 40% !important;*/
+/*    background-color: white !important;*/
+/*    opacity: 1 !important;*/
+/*    color: gray !important;*/
 /*}*/
 
-/*a {*/
-/*  color: inherit;*/
-/*  text-decoration: none;*/
-/*}*/
+/*Landing Page Text Animations*/
+.animate-charcter {
+    text-transform: uppercase;
+    background-image: linear-gradient(
+            -225deg,
+            #e81b05 0%,
+            #e14432 29%,
+            #e17d72 67%,
+            #e05b4c 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+}
 
-/** {*/
-/*  box-sizing: border-box;*/
-/*}*/
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/*Landing Page Hashtags*/
+#hash {
+    color: #d44737;
+}
+
+#hash:after {
+    content: "#collab";
+    animation: hash 4s linear infinite;
+}
+
+@keyframes hash {
+    0% {
+        content: "#0 handling fee";
+    }
+    50% {
+        content: "#secure";
+    }
+    100% {
+        content: "#directly";
+    }
+}
+
+/*Landing Page Hashtags*/
+#hashCHI {
+    color: #d44737;
+}
+
+#hashCHI:after {
+    content: "#collab";
+    animation: hashCHI 4s linear infinite;
+}
+
+@keyframes hashCHI {
+    0% {
+        content: "#0手續費";
+    }
+    50% {
+        content: "#保障交易";
+    }
+    100% {
+        content: "#第三方仲裁";
+    }
+}
+
+.ais-SearchBox {
+    width: 100%;
+    margin: 5px;
+}
+
+.ais-SearchBox-form {
+    display: grid;
+    grid-template-columns: auto 50px 50px;
+    border-radius: 0.75em;
+    background-color: white;
+
+    overflow: hidden;
+}
+
+.ais-SearchBox-input {
+    padding: 10px 5px;
+
+    color: #1f2937;
+}
+
+.ais-RefinementList-list {
+    padding: 2px 0 2px 14px;
+    color: #374151;
+}
+
+.ais-RefinementList-item {
+    margin: 5px 0;
+}
+
+.ais-RefinementList-count {
+    padding: 1px 2px;
+    background-color: #e8e8e8;
+    border-radius: 0.75em;
+    margin: 0 4px;
+}
+
+.ais-RefinementList-checkbox {
+    margin-right: 10px;
+}
+
+.ais-SearchBox-input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+
+.modal-open {
+    background-color: rgba(105, 105, 105, 0.7);
+}
+
+.btn-ghost:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.table th:first-child {
+    position: sticky;
+    z-index: 5;
+}
+
+.noScrollBar::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+}
+
+button:disabled {
+    opacity: 1 !important;
+    background-color: #e8e8e8 !important;
+}
+
+.tooltip.tooltip-open:after, .tooltip.tooltip-open:before, .tooltip:hover:after, .tooltip:hover:before {
+    z-index: 20;
+}
+
+
+/*Mobile Landing Page Carousel Custom CSS*/
+
+.custom-dots .carousel .control-dots .dot {
+    background-color: #e17d72;
+}

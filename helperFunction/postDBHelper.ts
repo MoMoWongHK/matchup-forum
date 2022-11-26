@@ -14,6 +14,7 @@ import {
 import firebaseApp from "../config/firebase";
 import { Post, POST_LIKE_DIRECTION } from "../model/Post";
 import { Reaction } from "../model/Reaction";
+import { v4 as uuidv4 } from "uuid";
 
 const db = getFirestore(firebaseApp);
 
@@ -77,6 +78,39 @@ const setPostLike = (
           });
         });
     }
+  });
+};
+
+const addPost = (
+  postDetail: Post
+): Promise<
+  | {
+      success: true;
+      data: Post;
+    }
+  | {
+      success: false;
+    }
+> => {
+  const postID = uuidv4();
+  const post: Post = {
+    ...postDetail,
+    id: postID,
+  };
+
+  return new Promise(async (resolve) => {
+    await setDoc(doc(db, "Post", postID), post)
+      .then((doc: any) => {
+        return resolve({
+          success: true,
+          data: post,
+        });
+      })
+      .catch((err: any) => {
+        return resolve({
+          success: false,
+        });
+      });
   });
 };
 
@@ -159,4 +193,4 @@ const getPosts = (
   });
 };
 
-export { isLikedPost, getPost, getPosts, setPostLike };
+export { addPost, isLikedPost, getPost, getPosts, setPostLike };

@@ -1,5 +1,10 @@
 {
   "explore": "Explore123",
+  "Header": {
+    "login": "Login",
+    "logout": "Logout",
+    "about": "About"
+  },
   "BottomAppBar": {
     "homepage": "Homepage",
     "login": "Login",
@@ -81,7 +86,11 @@
     "send": "Send",
     "sending": "Sending",
     "text": "Text",
-    "vote": "Vote"
+    "vote": "Vote",
+    "vote-options": "Vote Options",
+    "vote-title": "Vote title",
+    "new-option": "New Option",
+    "option-name": "option name"
   },
   "PostPage": {
     "back": "Back"

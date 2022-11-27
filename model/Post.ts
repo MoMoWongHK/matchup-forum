@@ -1,5 +1,16 @@
 import { DateObj } from "./SystemType";
 
+export type PostCreate = {
+  id: string;
+  cateID: string;
+  createDate: Date | DateObj;
+  createUserID: string;
+  numOfLike: number;
+  numOfShare: number;
+  numOfComment: number;
+  title: string;
+};
+
 export type Post = {
   id: string;
   cateID: string;
@@ -21,14 +32,14 @@ export enum POST_LIKE_DIRECTION {
   DISLIKE = "DISLIKE",
 }
 
-interface POST_TEXT_DATA {
+export interface POST_TEXT_DATA {
   type: POST_TYPE.TEXT;
   text: string;
 }
 
-interface POST_VOTE_DATA {
+export interface POST_VOTE_DATA {
   type: POST_TYPE.VOTE;
-  voteTitle: string;
+  text: string;
   numOfVote: number;
   voteOptions: { label: string; count: number }[];
 }
@@ -72,7 +83,7 @@ export const examplePost: Post[] = [
   },
 ];
 
-export const PostDefault: Post = {
+export const PostDefault: PostCreate = {
   id: "",
   cateID: "",
   createDate: new Date(),
@@ -81,6 +92,14 @@ export const PostDefault: Post = {
   numOfShare: 0,
   numOfComment: 0,
   title: "",
-  type: POST_TYPE.TEXT,
+};
+
+export const PostVoteDefault: {
+  text: string;
+  numOfVote: number;
+  voteOptions: { label: string; count: number }[];
+} = {
   text: "",
+  numOfVote: 0,
+  voteOptions: [],
 };

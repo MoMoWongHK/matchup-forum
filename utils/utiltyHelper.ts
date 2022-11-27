@@ -185,6 +185,7 @@ const logout = () => {
       localStorage.setItem("look4kol-auth", null);
     })
     .catch(function (error) {
+      console.log(error);
       // An error happened
     });
 };

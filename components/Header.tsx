@@ -4,8 +4,9 @@ import classNames from "classnames";
 import { faBell, faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { isAuth } from "../utils/utiltyHelper";
+import { isAuth, logout } from "../utils/utiltyHelper";
 import { useSelector } from "react-redux";
+import { Trans } from "react-i18next";
 
 export const Header: React.FC = (props) => {
   const auth = useSelector((state: any) => {
@@ -19,7 +20,7 @@ export const Header: React.FC = (props) => {
       <div className="navbar-start">
         <Link href="/">
           <div className="btn btn-ghost normal-case text-xl text-white">
-            Matchup forum
+            Matchup
           </div>
         </Link>
       </div>
@@ -53,9 +54,14 @@ export const Header: React.FC = (props) => {
                 <li>
                   <button
                     className="btn btn-ghost"
-                    onClick={() => router.push("/logout")}
+                    onClick={() => {
+                      logout();
+                      // setTimeout(() => {
+                      //   router.push("/");
+                      // }, 750);
+                    }}
                   >
-                    Logout
+                    <Trans>Header.logout</Trans>
                   </button>
                 </li>
               ) : (
@@ -64,7 +70,7 @@ export const Header: React.FC = (props) => {
                     className="btn btn-ghost"
                     onClick={() => router.push("/login")}
                   >
-                    Login
+                    <Trans>Header.login</Trans>
                   </button>
                 </li>
               )}
@@ -73,7 +79,7 @@ export const Header: React.FC = (props) => {
                 className="btn btn-ghost"
                 onClick={() => router.push("/about")}
               >
-                About
+                <Trans>Header.about</Trans>
               </button>
             </ul>
           </div>

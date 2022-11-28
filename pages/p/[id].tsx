@@ -49,7 +49,7 @@ const PostPage: NextPage = () => {
   }, [id]);
 
   return (
-    <div className="grid grid-cols-12 gap-4 p-4 max-w-7xl mx-auto">
+    <div className="md:grid grid-cols-12 gap-4 p-4 max-w-7xl mx-auto">
       <div className="col-span-12">
         <button
           className="my-auto text-left my-2 mx-2 text-gray-600 font-medium text-xl"

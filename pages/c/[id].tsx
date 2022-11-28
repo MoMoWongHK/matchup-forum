@@ -18,6 +18,8 @@ import {
 import { SUPPORTED_REDUX_FUNCTIONS } from "../../redux/SUPPORTED_REDUX_FUNCTION";
 import { ROLE } from "../../Enum/APP_TYPE";
 import { SUPPORTED_MODAL_TYPE } from "../../utils/ModalType";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAdd, faBell } from "@fortawesome/free-solid-svg-icons";
 
 enum OrderBy {
   HOT,
@@ -113,13 +115,13 @@ const Category: NextPage = () => {
   };
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
-      <section className="relative px-4 xl:px-8 ">
+    <div className="relative px-2 lg:p-4 max-w-7xl min-h-screen mx-auto">
+      <section className=" px-4 xl:px-8 ">
         <h1 className="text-3xl font-bold mb-4">{category.titleHK}</h1>
         <button
           disabled={isLoading}
           className={classNames(
-            "absolute right-0 top-0 btn btn-sm md:btn-md w-20 md:w-40 btn-primary",
+            "absolute right-2 top-0 btn btn-md w-20 md:w-40 btn-primary",
             { "btn-outline": followed }
           )}
           onClick={() => {
@@ -166,25 +168,27 @@ const Category: NextPage = () => {
         </div>
       </div>
 
-      <div className="float-right">
-        <button
-          className="btn"
-          onClick={() => {
-            openCreatePostModal({
-              returnFn: () => {
-                console.log("done");
-              },
-              metaData: {},
-            });
-          }}
-        >
-          <Trans>CategoryPage.create-post</Trans>
-        </button>
-      </div>
-
       <div className="">
         <ListPost posts={posts} />
       </div>
+
+      <button
+        className="fixed right-4 bottom-24 w-14 h-14 btn btn-primary btn-circle shadow"
+        onClick={() => {
+          openCreatePostModal({
+            returnFn: () => {
+              console.log("done");
+            },
+            metaData: {},
+          });
+        }}
+      >
+        {/*<Trans>CategoryPage.create-post</Trans>*/}
+        <FontAwesomeIcon
+          icon={faAdd}
+          className={classNames("text-lg text-white")}
+        />
+      </button>
     </div>
   );
 };

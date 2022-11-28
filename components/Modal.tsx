@@ -122,7 +122,7 @@ const CustomModal: React.FC<Modal> = ({
                   <label
                     onClick={() => closeModalFunc()}
                     htmlFor="my-modal-3"
-                    className="md:visible invisible btn btn-sm btn-circle absolute right-2 top-2"
+                    className=" btn btn-sm btn-circle absolute right-2 top-2"
                   >
                     ✕
                   </label>
@@ -144,7 +144,7 @@ const CustomModal: React.FC<Modal> = ({
                   style={{
                     minHeight: "150px",
                     marginBottom: "calc(env(safe-area-inset-bottom) + 40px)",
-                    maxHeight: screenWidth < 720 ? "420px" : "600px",
+                    maxHeight: screenWidth < 720 ? "420px" : "500px",
                   }}
                 >
                   <Component

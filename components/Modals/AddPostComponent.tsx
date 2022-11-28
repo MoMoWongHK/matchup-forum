@@ -46,6 +46,8 @@ const AddPostComponent = (props: AddPostComponentProps, ref: any) => {
     returnData() {
       return {
         ...post,
+        ...(postType === POST_TYPE.TEXT ? textDetail : voteDetail),
+        type: postType,
         cateID: id as string,
         createUserID: auth.uid,
       };
@@ -183,7 +185,7 @@ const AddPostComponent = (props: AddPostComponentProps, ref: any) => {
                       onClick={() => {
                         let newOptions = [...voteDetail.voteOptions];
                         newOptions.splice(index, 1);
-                        console.log(newOptions);
+
                         setVoteDetail({
                           ...voteDetail,
                           voteOptions: newOptions,

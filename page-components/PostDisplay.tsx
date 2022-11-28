@@ -20,7 +20,28 @@ export const PostDisplay: React.FC<PropsType> = ({ post }) => {
       </div>
     );
   } else if (post.type === POST_TYPE.VOTE) {
-    return <div>vote</div>;
+    return (
+      <div>
+        <p>{parse(post.text)}</p>
+
+        <ul className="flex flex-col gap-2">
+          {post.voteOptions.map((option, index) => {
+            return (
+              <li
+                key={"option" + index}
+                className="flex-1 btn btn-ghost bg-gray-100 border border-gray-200"
+              >
+                {option.label}
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="my-2">
+          {post.voteOptions.reduce((a, b) => a + b.count, 0)}
+        </div>
+      </div>
+    );
   } else {
     return <div></div>;
   }

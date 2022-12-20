@@ -3,19 +3,28 @@ import { NextPage } from "next";
 import { CommentList } from "../../components/CommentList";
 import { useRouter } from "next/router";
 import { getPost } from "../../helperFunction/postDBHelper";
-import { Post, PostDefault } from "../../model/Post";
+import {
+  Post,
+  POST_TYPE,
+  PostDefault,
+  PostVoteDefault,
+} from "../../model/Post";
 import { PostDisplay } from "../../page-components/PostDisplay";
 import { timeAgo } from "../../utils/utiltyHelper";
 import { getUserBasicInfo } from "../../helperFunction/userDBHelper";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { Trans } from "react-i18next";
 
 const PostPage: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const [post, setPost] = useState<Post>(PostDefault);
+  const [post, setPost] = useState<Post>({
+    ...PostDefault,
+    ...PostVoteDefault,
+    type: POST_TYPE.VOTE,
+  });
 
   const [postUser, setPostUser] = useState<{
     userName: string;
